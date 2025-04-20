@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Princesa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+        }
+        header {
+            background-color: #ffb6c1;
+            padding: 30px 0;
+        }
+        h1 {
+            font-size: 3em;
+            color: #fff;
+        }
+        .content {
+            padding: 20px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .heart {
+            animation: heart-animation 1s infinite alternate;
+        }
+        @keyframes heart-animation {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.7; }
+        }
+        .photo-section {
+            margin-top: 40px;
+        }
+        .photo-section button {
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .photo-section button:hover {
+            background-color: #ff1493;
+        }
+        .photo-preview {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .photo-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Minha Princesa</h1>
+    </header>
 
+    <div class="content">
+        <p>
+            Desde que você entrou na minha vida, tudo ganhou mais cor, mais sentido e mais amor. Você é a razão do meu sorriso, a calmaria nos meus dias difíceis e a melhor parte de mim.<br><br>
+            Estar ao seu lado é como viver um sonho bom todos os dias, e cada momento com você é uma lembrança que guardo com carinho no coração.<br><br>
+            Eu te amo por quem você é, pelo jeito que me olha, pelo jeito que me entende e até quando a gente discorda, porque mesmo nesses momentos, eu sei que é com você que eu quero estar.<br><br>
+            Obrigado por me fazer tão feliz, por acreditar em nós, por me dar amor de verdade.<br><br>
+            Prometo sempre cuidar de você, te respeitar, te apoiar e fazer o possível pra te ver sorrindo.<br><br>
+            Você é minha princesa, meu amor, meu tudo.<br><br>
+            E esse site é só uma pequena forma de dizer o quanto você é especial pra mim.<br><br>
+            Com amor, Goes
+        </p>
+        <div class="heart">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Heart_icon.png" alt="Coração" width="50">
+        </div>
+    </div>
+
+    <div class="photo-section">
+        <input type="file" id="file-input" accept="image/*" multiple>
+        <div id="photo-preview" class="photo-preview"></div>
+    </div>
+
+    <!-- YouTube Video Embed -->
+    <div class="youtube-video" style="margin-top: 30px;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2_3ZKGGzA88?autoplay=1&loop=1&playlist=2_3ZKGGzA88" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById("file-input");
+        const photoPreview = document.getElementById("photo-preview");
+
+        fileInput.addEventListener("change", function(event) {
+            const files = event.target.files;
+            photoPreview.innerHTML = "";
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    photoPreview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
